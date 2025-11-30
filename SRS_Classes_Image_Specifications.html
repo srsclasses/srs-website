@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRS Classes - Image & Banner Specifications</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .page-break { page-break-before: always; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f9fafb;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #2563eb;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2563eb;
+            font-weight: 700;
+        }
+        
+        .subsection-title {
+            font-size: 18px;
+            color: #1e40af;
+            margin: 24px 0 12px 0;
+            font-weight: 600;
+        }
+        
+        .spec-box {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .spec-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+        
+        .spec-value {
+            color: #1f2937;
+        }
+        
+        .file-list {
+            background: #fef3c7;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .file-list ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        
+        .file-list li {
+            padding: 4px 0;
+            color: #78350f;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tbody tr:hover {
+            background: #f9fafb;
+        }
+        
+        .priority-high {
+            background: #fef2f2;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+            margin: 16px 0;
+        }
+        
+        .priority-medium {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 16px 0;
+        }
+        
+        .priority-low {
+            background: #ecfdf5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+            margin: 16px 0;
+        }
+        
+        .priority-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .tip-box {
+            background: #dbeafe;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            margin: 20px 0;
+        }
+        
+        .tip-box h4 {
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .tip-box ul {
+            margin-left: 20px;
+        }
+        
+        .tip-box li {
+            padding: 6px 0;
+            color: #1e3a8a;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .badge-essential {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .badge-optional {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📐 SRS Classes</h1>
+        <h2 style="margin-top: 10px;">Complete Image & Banner Specifications Guide</h2>
+        <p style="margin-top: 16px;">Comprehensive guide for all photos, banners, and graphics needed for the SRS Classes website</p>
+        <p style="margin-top: 8px; opacity: 0.8;">Date: November 27, 2025</p>
+    </div>
+
+    <!-- Section 1: Profile Photos -->
+    <div class="section">
+        <h2 class="section-title">👤 1. Profile Photos</h2>
+        
+        <h3 class="subsection-title">A. Mentor Profile Photos <span class="badge badge-essential">ESSENTIAL</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">400 × 400 pixels (Square)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Aspect Ratio:</div>
+                <div class="spec-value">1:1 (Circle crop applied in UI)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">JPG or PNG</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">200 KB per image</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Quality Requirements:</div>
+                <div class="spec-value">High quality, professional headshots</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Background:</div>
+                <div class="spec-value">Clean, solid color or slightly blurred</div>
+            </div>
+        </div>
+        
+        <div class="file-list">
+            <strong>📁 Location:</strong> <code>/public/images/mentors/</code>
+            <ul>
+                <li>rajesh.jpg</li>
+                <li>anita.jpg</li>
+                <li>suresh.jpg</li>
+                <li>priya-m.jpg</li>
+                <li>amit-d.jpg</li>
+                <li>kavita.jpg</li>
+            </ul>
+            <strong>Total needed: 6 images</strong>
+        </div>
+
+        <h3 class="subsection-title">B. Student/Top Performer Photos <span class="badge badge-essential">ESSENTIAL</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">400 × 400 pixels (Square)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Aspect Ratio:</div>
+                <div class="spec-value">1:1 (Circle crop applied in UI)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">JPG or PNG</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">200 KB per image</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Quality Requirements:</div>
+                <div class="spec-value">Professional quality photos</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Background:</div>
+                <div class="spec-value">Clean background preferred</div>
+            </div>
+        </div>
+        
+        <div class="file-list">
+            <strong>📁 Location:</strong> <code>/public/images/students/</code>
+            <ul>
+                <li>rahul.jpg</li>
+                <li>priya.jpg</li>
+                <li>amit.jpg</li>
+                <li>sneha.jpg</li>
+            </ul>
+            <strong>Total needed: 4 images</strong>
+        </div>
+    </div>
+
+    <!-- Section 2: Course Images -->
+    <div class="section page-break">
+        <h2 class="section-title">🎓 2. Course Thumbnails/Banners</h2>
+        
+        <h3 class="subsection-title">Course Card Images <span class="badge badge-optional">OPTIONAL</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">800 × 400 pixels</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Aspect Ratio:</div>
+                <div class="spec-value">2:1</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Display Height:</div>
+                <div class="spec-value">192px (h-48 in Tailwind)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">JPG or WebP (recommended)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">150 KB per image</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Current Status:</div>
+                <div class="spec-value">Using colored backgrounds (bg-blue-100, etc.)</div>
+            </div>
+        </div>
+        
+        <div class="file-list">
+            <strong>📁 Location:</strong> <code>/public/images/courses/</code>
+            <ul>
+                <li>bpsc-hindi.jpg</li>
+                <li>bpsc-english.jpg</li>
+                <li>upsc.jpg</li>
+                <li>daroga.jpg</li>
+                <li>mathematics.jpg</li>
+                <li>physics.jpg</li>
+            </ul>
+            <strong>Total needed: 6 images</strong>
+        </div>
+    </div>
+
+    <!-- Section 3: Homepage Banners -->
+    <div class="section">
+        <h2 class="section-title">🏠 3. Homepage Banners & Images</h2>
+        
+        <h3 class="subsection-title">A. Hero Section Background <span class="badge badge-optional">OPTIONAL</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">1920 × 800 pixels</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">JPG or WebP</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">500 KB</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Current Status:</div>
+                <div class="spec-value">Using gradient background</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Location:</div>
+                <div class="spec-value">/public/images/hero/hero-bg.jpg</div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title">B. About Section Image <span class="badge badge-optional">RECOMMENDED</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">1280 × 720 pixels</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Aspect Ratio:</div>
+                <div class="spec-value">16:9 (Video aspect ratio)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">JPG or WebP</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">300 KB</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Suggested Content:</div>
+                <div class="spec-value">Classroom photo, building exterior, or students studying</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Location:</div>
+                <div class="spec-value">/public/images/about/about-main.jpg</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Branding -->
+    <div class="section page-break">
+        <h2 class="section-title">🎨 4. Logo & Branding</h2>
+        
+        <h3 class="subsection-title">A. Site Logo <span class="badge badge-essential">ESSENTIAL</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">300 × 90 pixels (or 200 × 60 pixels)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">PNG with transparency or SVG (preferred)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">50 KB</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Variations:</div>
+                <div class="spec-value">Full color logo for light backgrounds</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Location:</div>
+                <div class="spec-value">/public/images/logo.png or /public/logo.svg</div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title">B. Favicon <span class="badge badge-essential">ESSENTIAL</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Main Favicon:</div>
+                <div class="spec-value">512 × 512 pixels (PNG or ICO)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Additional Sizes:</div>
+                <div class="spec-value">
+                    • favicon-16x16.png (16 × 16 px)<br>
+                    • favicon-32x32.png (32 × 32 px)<br>
+                    • apple-touch-icon.png (180 × 180 px)
+                </div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Location:</div>
+                <div class="spec-value">/public/favicon.ico and /public/</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 5: Social Media -->
+    <div class="section">
+        <h2 class="section-title">📱 5. Social Media / OG Images</h2>
+        
+        <h3 class="subsection-title">Open Graph Image (for social sharing) <span class="badge badge-optional">RECOMMENDED</span></h3>
+        <div class="spec-box">
+            <div class="spec-item">
+                <div class="spec-label">Dimensions:</div>
+                <div class="spec-value">1200 × 630 pixels</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Format:</div>
+                <div class="spec-value">JPG or PNG</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Max File Size:</div>
+                <div class="spec-value">500 KB</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Content:</div>
+                <div class="spec-value">SRS Classes branding with tagline</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Location:</div>
+                <div class="spec-value">/public/images/og-image.jpg</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">Usage:</div>
+                <div class="spec-value">Facebook, Twitter, LinkedIn previews when sharing links</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Reference Table -->
+    <div class="section page-break">
+        <h2 class="section-title">📊 Quick Reference Table</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Image Type</th>
+                    <th>Size (px)</th>
+                    <th>Ratio</th>
+                    <th>Format</th>
+                    <th>Max Size</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mentor Photos</strong></td>
+                    <td>400 × 400</td>
+                    <td>1:1</td>
+                    <td>JPG/PNG</td>
+                    <td>200 KB</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td><strong>Student Photos</strong></td>
+                    <td>400 × 400</td>
+                    <td>1:1</td>
+                    <td>JPG/PNG</td>
+                    <td>200 KB</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td><strong>Course Thumbnails</strong></td>
+                    <td>800 × 400</td>
+                    <td>2:1</td>
+                    <td>JPG/WebP</td>
+                    <td>150 KB</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td><strong>About Section</strong></td>
+                    <td>1280 × 720</td>
+                    <td>16:9</td>
+                    <td>JPG/WebP</td>
+                    <td>300 KB</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><strong>Hero Background</strong></td>
+                    <td>1920 × 800</td>
+                    <td>—</td>
+                    <td>JPG/WebP</td>
+                    <td>500 KB</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><strong>Logo</strong></td>
+                    <td>300 × 90</td>
+                    <td>—</td>
+                    <td>PNG/SVG</td>
+                    <td>50 KB</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><strong>Favicon</strong></td>
+                    <td>512 × 512</td>
+                    <td>1:1</td>
+                    <td>PNG</td>
+                    <td>20 KB</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><strong>OG Image</strong></td>
+                    <td>1200 × 630</td>
+                    <td>—</td>
+                    <td>JPG</td>
+                    <td>500 KB</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Priority Order -->
+    <div class="section">
+        <h2 class="section-title">✅ Priority Order</h2>
+        
+        <div class="priority-high">
+            <div class="priority-title">🔴 HIGH PRIORITY (Essential - Must Have)</div>
+            <ol style="margin-left: 20px; margin-top: 12px;">
+                <li style="padding: 6px 0;"><strong>Mentor photos</strong> — 6 images (400×400 px)</li>
+                <li style="padding: 6px 0;"><strong>Student photos</strong> — 4 images (400×400 px)</li>
+                <li style="padding: 6px 0;"><strong>Site Logo</strong> — 1 image (300×90 px, PNG/SVG)</li>
+                <li style="padding: 6px 0;"><strong>Favicon</strong> — 1 set of icons</li>
+            </ol>
+        </div>
+
+        <div class="priority-medium">
+            <div class="priority-title">🟡 MEDIUM PRIORITY (Enhances UX)</div>
+            <ol style="margin-left: 20px; margin-top: 12px;" start="5">
+                <li style="padding: 6px 0;"><strong>About section image</strong> — 1 image (1280×720 px)</li>
+                <li style="padding: 6px 0;"><strong>Course thumbnails</strong> — 6 images (800×400 px)</li>
+                <li style="padding: 6px 0;"><strong>OG Image for social sharing</strong> — 1 image (1200×630 px)</li>
+            </ol>
+        </div>
+
+        <div class="priority-low">
+            <div class="priority-title">🟢 LOW PRIORITY (Optional Enhancements)</div>
+            <ol style="margin-left: 20px; margin-top: 12px;" start="8">
+                <li style="padding: 6px 0;"><strong>Hero background image</strong> — 1 image (1920×800 px)</li>
+                <li style="padding: 6px 0;"><strong>News thumbnail images</strong> — Variable quantity</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Optimization Tips -->
+    <div class="section">
+        <h2 class="section-title">💡 Image Optimization Tips</h2>
+        
+        <div class="tip-box">
+            <h4>Best Practices for Web Images:</h4>
+            <ul>
+                <li><strong>Use WebP format</strong> where possible for 30-50% better compression than JPG/PNG</li>
+                <li><strong>Compress all images</strong> using tools like:
+                    <ul style="margin-left: 20px; margin-top: 6px;">
+                        <li>TinyPNG (https://tinypng.com)</li>
+                        <li>Squoosh (https://squoosh.app)</li>
+                        <li>ImageOptim (Mac) or FileOptimizer (Windows)</li>
+                    </ul>
+                </li>
+                <li><strong>Use descriptive filenames</strong> (e.g., 'mentor-rajesh-kumar.jpg' not 'IMG_1234.jpg')</li>
+                <li><strong>Add alt text</strong> for all images to improve accessibility and SEO</li>
+                <li><strong>Consider lazy loading</strong> for below-the-fold images to improve page load speed</li>
+                <li><strong>Use responsive images</strong> with srcset attribute for different screen sizes</li>
+                <li><strong>Maintain aspect ratios</strong> to prevent layout shifts during page load</li>
+                <li><strong>Test on retina displays</strong> to ensure quality on high-DPI screens</li>
+            </ul>
+        </div>
+
+        <div class="tip-box" style="background: #fef3c7; border-left-color: #f59e0b;">
+            <h4 style="color: #92400e;">⚠️ Important Notes:</h4>
+            <ul>
+                <li>All profile photos will be displayed in <strong>circular frames</strong>, so ensure faces are centered</li>
+                <li>Course images currently use <strong>colored backgrounds</strong> as placeholders</li>
+                <li>Current Affairs icons are <strong>SVG-based</strong> and don't need external images</li>
+                <li>Ensure all images are <strong>properly licensed</strong> for commercial use</li>
+                <li>Keep <strong>backup copies</strong> of original high-resolution images</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>SRS Classes - Image Specifications Guide</strong></p>
+        <p>For technical support or questions, please contact your development team</p>
+        <p style="margin-top: 12px; font-size: 12px;">Document generated on November 27, 2025</p>
+    </div>
+</body>
+</html>
