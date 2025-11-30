@@ -2,14 +2,14 @@ export const heroSlides = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=600&fit=crop",
-    title: "Excellence in Education",
-    subtitle: "Preparing students for BPSC & UPSC",
+    title: "Best BPSC Coaching",
+    subtitle: "Join our Online & Offline Classes for BPSC Success",
   },
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=600&fit=crop",
     title: "Expert Faculty",
-    subtitle: "Learn from experienced mentors",
+    subtitle: "Learn from experienced mentors in our classrooms",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const heroSlides = [
     id: 4,
     image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1200&h=600&fit=crop",
     title: "Modern Learning",
-    subtitle: "State-of-the-art facilities and resources",
+    subtitle: "State-of-the-art offline centers and online platform",
   },
 ];
 
@@ -78,8 +78,8 @@ export const popularCourses = [
 
 export const aboutSection = {
   title: "About SRS Classes",
-  description1: "Founded with a vision to make quality education accessible to all, SRS Classes has become a beacon of hope for competitive exam aspirants. We believe in a holistic approach to learning, focusing not just on syllabus coverage but on building conceptual clarity and critical thinking.",
-  description2: "Our team of dedicated educators brings years of experience and a passion for teaching. We are committed to guiding you through every step of your journey, from the first class to the final selection.",
+  description1: "Founded with a vision to make quality education accessible to all, SRS Classes is a premier institute offering both Online and Offline coaching for BPSC and other competitive exams. We provide a comprehensive learning ecosystem that blends traditional classroom teaching with modern digital resources.",
+  description2: "Our team of dedicated educators brings years of experience and a passion for teaching. Whether you join our offline centers or our online platform, we are committed to guiding you through every step of your journey to success.",
   ctaText: "Learn More",
   ctaLink: "/about"
 };

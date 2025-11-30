@@ -1,6 +1,6 @@
 # SRS Classes - Full Stack Application
 
-This is a full-stack application for SRS Classes, an educational platform.
+This is a full-stack application for SRS Classes, a startup offering online and offline classes for BPSC and other competitive exams.
 
 ## Project Structure
 
@@ -43,13 +43,22 @@ The frontend will be available at `http://localhost:3000`
 
 ## Backend
 
-Backend integration is in progress. This section will be updated once the backend is implemented.
+The backend is built with Node.js and Express.
 
-### Planned Backend Features
-- API endpoints for courses, mentors, students
-- Authentication and authorization
-- Database integration
-- Admin panel for content management
+### Running the Backend
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+The backend server runs on port 5000 (default).
+
+### Features
+- API endpoints for courses, notices, and more.
+- Serves static data for the frontend.
+
 
 ## Development
 

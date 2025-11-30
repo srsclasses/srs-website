@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SRS Classes - Quality Education for Competitive Exams",
-  description: "Empowering students to achieve their dreams through quality education and expert guidance for BPSC, UPSC, and other competitive exams.",
+  title: "SRS Classes - Best Online & Offline BPSC Coaching",
+  description: "Join SRS Classes for top-notch BPSC preparation. We offer both online and offline classes with expert faculty and comprehensive study material.",
 };
 
 export default function RootLayout({ children }) {
