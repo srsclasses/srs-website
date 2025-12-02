@@ -8,7 +8,7 @@ const courses = [
     id: 1,
     title: "BPSC Complete Course (Hindi)",
     description: "Comprehensive BPSC preparation in Hindi medium with complete syllabus coverage and expert guidance.",
-    level: "Intermediate to Advanced",
+    level: "Beginner to Advanced",
     duration: "6 Months",
     image: "/images/bpsc hindi batch 1.jpg",
     imagePlaceholder: "bg-orange-100",
@@ -19,7 +19,7 @@ const courses = [
     id: 2,
     title: "BPSC Complete Course (English)",
     description: "Master BPSC preparation with English medium comprehensive course for all competitive exams.",
-    level: "Intermediate to Advanced",
+    level: "Beginner to Advanced",
     duration: "6 Months",
     image: "/images/bpsc english batch-1.jpg",
     imagePlaceholder: "bg-blue-100",
@@ -30,7 +30,7 @@ const courses = [
     id: 3,
     title: "Foundation Batch (Hindi) - Batch 1",
     description: "Build strong fundamentals with our Hindi medium foundation course for competitive exam aspirants.",
-    level: "Beginner",
+    level: "Beginner to Advanced",
     duration: "4 Months",
     image: "/images/foundation batch hindi-1.jpg",
     imagePlaceholder: "bg-green-100",
@@ -41,7 +41,7 @@ const courses = [
     id: 4,
     title: "Foundation Batch (Hindi) - Batch 2",
     description: "Advanced foundation course in Hindi covering all essential topics for government exam preparation.",
-    level: "Beginner to Intermediate",
+    level: "Beginner to Advanced",
     duration: "4 Months",
     image: "/images/foundation batch hindi batch-2.jpg",
     imagePlaceholder: "bg-purple-100",
@@ -52,7 +52,7 @@ const courses = [
     id: 5,
     title: "Foundation Batch (English) - Batch 2",
     description: "Complete foundation course in English medium with comprehensive coverage of all subjects.",
-    level: "Beginner to Intermediate",
+    level: "Beginner to Advanced",
     duration: "4 Months",
     image: "/images/fondation english batch-2.jpg",
     imagePlaceholder: "bg-indigo-100",
@@ -63,7 +63,7 @@ const courses = [
     id: 6,
     title: "BPSC AEDO Free Course",
     description: "Free comprehensive course for BPSC AEDO preparation with expert faculty and study materials.",
-    level: "All Levels",
+    level: "Beginner to Advanced",
     duration: "3 Months",
     image: "/images/BPSC aedo free.jpg",
     imagePlaceholder: "bg-pink-100",
@@ -111,23 +111,23 @@ export default function CoursesPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2">
           {courses.map((course) => (
             <div 
               key={course.id} 
               onClick={() => handleCardClick(course.id)}
-              className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:shadow-xl hover:border-blue-300 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-md transition-all hover:shadow-2xl hover:border-blue-400 cursor-pointer"
             >
               {/* Course Image */}
-              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+              <div className="relative w-full h-64 sm:h-72 md:h-80 overflow-hidden bg-white">
                 <Image
                   src={course.image}
                   alt={course.title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={course.id <= 3}
-                  quality={95}
+                  className="object-contain transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={course.id <= 2}
+                  quality={100}
                 />
               </div>
 

@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { notices as allNotices } from "@/data/notices";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -24,29 +25,9 @@ const staggerContainer = {
 };
 
 export default function NoticesPage() {
-  const [notices, setNotices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [notices, setNotices] = useState(allNotices);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchNotices = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/notices');
-        if (!response.ok) {
-          throw new Error('Failed to fetch notices');
-        }
-        const data = await response.json();
-        setNotices(data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching notices:", err);
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    fetchNotices();
-  }, []);
 
   const getCategoryColor = (category) => {
     const colors = {

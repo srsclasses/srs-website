@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { notices as allNotices } from "@/data/notices";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -24,26 +25,8 @@ const staggerContainer = {
 };
 
 const RecentNoticesSection = () => {
-  const [notices, setNotices] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNotices = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/notices');
-        if (response.ok) {
-          const data = await response.json();
-          setNotices(data.slice(0, 5));
-        }
-      } catch (error) {
-        console.error("Error fetching notices:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNotices();
-  }, []);
+  const [notices, setNotices] = useState(allNotices.slice(0, 3));
+  const [loading, setLoading] = useState(false);
 
   if (loading) {
     return (

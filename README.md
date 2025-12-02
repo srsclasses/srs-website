@@ -1,88 +1,155 @@
-# SRS Classes - Full Stack Application
+# SRS Classes - Educational Platform
 
-This is a full-stack application for SRS Classes, a startup offering online and offline classes for BPSC and other competitive exams.
+Welcome to **SRS Classes**, a startup offering online and offline classes for BPSC and other competitive exams. This project provides a comprehensive educational platform with features for courses, notices, current affairs, and more.
 
-## Project Structure
+## 🚀 Features
+
+- **Modern UI/UX**: Beautiful, responsive design with dark mode support
+- **Dynamic Content**: All data managed through local data files
+- **Course Management**: Display and manage BPSC courses
+- **Notices System**: Keep students informed with important announcements
+- **Current Affairs**: Daily updates on national and international news
+- **Mentor Profiles**: Showcase experienced faculty
+- **Top Performers**: Highlight successful students
+- **Responsive Design**: Works perfectly on all devices
+
+## 📁 Project Structure
 
 ```
 srs-classes/
-├── frontend/          # Next.js frontend application
+├── frontend/                   # Next.js application
 │   ├── src/
-│   │   ├── app/      # Next.js app router pages
-│   │   ├── components/ # React components
-│   │   └── data/     # Static data files
-│   ├── public/       # Static assets
-│   └── package.json  # Frontend dependencies
-└── backend/          # Backend application (to be added)
+│   │   ├── app/               # Pages (home, courses, notices, etc.)
+│   │   ├── components/        # Reusable components
+│   │   └── data/              # Local data files
+│   │       ├── homeData.js    # Hero slides, courses, about section
+│   │       ├── notices.js     # Notices data
+│   │       └── currentAffairs.js # Current affairs data
+│   ├── public/
+│   │   └── images/            # Course images
+│   ├── package.json
+│   └── other config files
+├── .gitignore
+├── README.md
+└── PROJECT_STATUS.md
 ```
 
-## Frontend
+## 🛠️ Technology Stack
 
-The frontend is built with:
-- **Next.js 15** - React framework with App Router
-- **React 19** - UI library
-- **CSS** - Styling
+### Frontend
+- **Framework**: Next.js 16 with React 19
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Image Optimization**: Next.js Image component
+- **Routing**: Next.js App Router
 
-### Running the Frontend
+## 📦 Installation & Setup
 
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
 ```bash
 cd frontend
+```
+
+2. Install dependencies:
+```bash
 npm install
+```
+
+3. Run the development server:
+```bash
 npm run dev
 ```
 
-The frontend will be available at `http://localhost:3000`
-
-### Frontend Features
-- Home page with hero section, stats, mentors, and top performers
-- Course listings and details
-- Current affairs with state-wise news filtering
-- About Us page
-- Dynamic routing for mentors and students
-- Responsive design with dark mode support
-
-## Backend
-
-The backend is built with Node.js and Express.
-
-### Running the Backend
-
-```bash
-cd backend
-npm install
-npm start
+4. Open your browser and navigate to:
+```
+http://localhost:3000
 ```
 
-The backend server runs on port 5000 (default).
+## 🎨 Key Pages
 
-### Features
-- API endpoints for courses, notices, and more.
-- Serves static data for the frontend.
+- **Home** (`/`): Hero carousel, popular courses, recent notices, about section
+- **Courses** (`/courses`): All available BPSC courses
+- **Course Detail** (`/courses/[id]`): Individual course information
+- **Notices** (`/notices`): All announcements and notices
+- **Notice Detail** (`/notices/[id]`): Full notice content
+- **Current Affairs** (`/current-affairs`): Daily news updates
+- **About** (`/about`): Information about SRS Classes
+- **Mentors** (`/mentors`): Faculty profiles
+- **Top Performers** (`/top-performers`): Successful students
 
+## 📝 Data Management
 
-## Development
+All data is stored locally in the `frontend/src/data/` directory:
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+### homeData.js
+- Hero carousel slides
+- Popular courses
+- About section content
 
-### Getting Started
+### notices.js
+- Notice announcements
+- Categories: Admission, Examination, Event, Academic, General
 
-1. Clone the repository
-2. Navigate to the frontend directory and install dependencies:
-   ```bash
-   cd frontend
-   npm install
-   ```
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+### currentAffairs.js
+- National news
+- International news
+- State-specific news (Bihar)
+- Organized by date
 
-## Contributing
+To update content, simply edit the relevant data file and restart the development server.
 
-This is a private educational project for SRS Classes.
+## 🎯 Features Breakdown
 
-## License
+### Hero Section
+- Auto-rotating carousel with 4 slides
+- Smooth transitions and animations
+- Responsive images
 
-All rights reserved - SRS Classes
+### Courses
+- 6 BPSC courses with actual images
+- Three action buttons: Info, Buy Online, Buy Offline
+- Detailed course pages
+
+### Notices
+- Categorized notices
+- "NEW" and "PINNED" badges
+- Full-content view on detail pages
+- Print and share functionality
+
+### Current Affairs
+- Date-wise organization
+- Category filtering (National, International, State)
+- Expandable detail views
+- High-priority badges
+
+## 🔧 Configuration
+
+### Update Site Metadata
+Edit `frontend/src/app/layout.js` to change:
+- Site title
+- Description
+- Metadata
+
+### Modify Colors
+Update `frontend/tailwind.config.js` for theme customization.
+
+### Add New Pages
+Create new files in `frontend/src/app/` following Next.js App Router conventions.
+
+## 📄 License
+
+This project is proprietary and belongs to SRS Classes.
+
+## 📞 Contact
+
+For questions or support, please contact SRS Classes administration.
+
+---
+
+**Built with ❤️ by SRS Classes Team**

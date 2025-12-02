@@ -3,28 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { aboutSection } from "@/data/homeData";
 
 const AboutSection = () => {
-  const [aboutData, setAboutData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchAboutData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/about-section');
-        if (response.ok) {
-          const data = await response.json();
-          setAboutData(data);
-        }
-      } catch (error) {
-        console.error("Error fetching about section:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAboutData();
-  }, []);
+  const [aboutData, setAboutData] = useState(aboutSection);
+  const [loading, setLoading] = useState(false);
 
   if (loading || !aboutData) {
     return (

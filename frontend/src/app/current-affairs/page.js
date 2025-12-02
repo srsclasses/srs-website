@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { currentAffairsData } from "@/data/currentAffairs";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -24,39 +25,23 @@ export default function CurrentAffairsPage() {
   const [currentAffairs, setCurrentAffairs] = useState(null);
   const [availableDates, setAvailableDates] = useState([]);
   const [availableStates, setAvailableStates] = useState([]);
-  const [allData, setAllData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [allData, setAllData] = useState(currentAffairsData);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/current-affairs');
-        if (response.ok) {
-          const data = await response.json();
-          setAllData(data);
-          
-          const dates = data.map(d => d.date);
-          setAvailableDates(dates);
+    const dates = currentAffairsData.map(d => d.date);
+    setAvailableDates(dates);
 
-          if (dates.length > 0) {
-            const latest = dates[0];
-            setSelectedDate(latest);
-            const latestData = data.find(d => d.date === latest);
-            setCurrentAffairs(latestData);
-            
-            // Get available states for this date
-            const states = latestData.state ? Object.keys(latestData.state) : [];
-            setAvailableStates(states);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching current affairs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    if (dates.length > 0) {
+      const latest = dates[0];
+      setSelectedDate(latest);
+      const latestData = currentAffairsData.find(d => d.date === latest);
+      setCurrentAffairs(latestData);
+      
+      // Get available states for this date
+      const states = latestData.state ? Object.keys(latestData.state) : [];
+      setAvailableStates(states);
+    }
   }, []);
 
   // Update current affairs when date changes

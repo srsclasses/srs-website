@@ -510,26 +510,3 @@ Limited seats available. Enroll now to transform your interview preparation!`,
     isPinned: false
   }
 ];
-
-export const getAllNotices = () => {
-  return notices.sort((a, b) => {
-    // Pinned notices first
-    if (a.isPinned && !b.isPinned) return -1;
-    if (!a.isPinned && b.isPinned) return 1;
-    // Then sort by date (newest first)
-    return new Date(b.date) - new Date(a.date);
-  });
-};
-
-export const getRecentNotices = (count = 5) => {
-  return getAllNotices().slice(0, count);
-};
-
-export const getNoticeById = (id) => {
-  return notices.find(notice => notice.id === parseInt(id));
-};
-
-export const getNoticesByCategory = (category) => {
-  return notices.filter(notice => notice.category === category)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-};

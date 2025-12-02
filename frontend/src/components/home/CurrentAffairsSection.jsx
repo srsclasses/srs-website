@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { getLatestCurrentAffairs } from "@/data/currentAffairs";
+import { currentAffairsData } from "@/data/currentAffairs";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -15,7 +15,7 @@ const fadeIn = {
 
 const CurrentAffairsSection = () => {
   // Get latest current affairs data
-  const latestData = getLatestCurrentAffairs();
+  const latestData = currentAffairsData[0]; // Get the most recent date entry
   const nationalHeadlines = latestData?.national?.slice(0, 4) || [];
   const internationalHeadlines = latestData?.international?.slice(0, 4) || [];
   const biharHeadlines = latestData?.state?.Bihar?.slice(0, 4) || [];

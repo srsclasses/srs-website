@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { popularCourses } from "@/data/homeData";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
@@ -26,26 +27,8 @@ const staggerContainer = {
 };
 
 const PopularCoursesSection = () => {
-  const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/popular-courses');
-        if (response.ok) {
-          const data = await response.json();
-          setCourses(data);
-        }
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCourses();
-  }, []);
+  const [courses, setCourses] = useState(popularCourses);
+  const [loading, setLoading] = useState(false);
 
   const getColorClass = (color) => {
     const colorMap = {
@@ -84,7 +67,7 @@ const PopularCoursesSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-8 sm:grid-cols-1 md:grid-cols-2"
           >
             {courses.map((course) => {
               const handleCardClick = () => {
@@ -106,16 +89,16 @@ const PopularCoursesSection = () => {
                 <motion.div key={course.id} variants={fadeIn}>
                   <div 
                     onClick={handleCardClick}
-                    className="group block relative overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-xl hover:border-blue-300 border border-transparent cursor-pointer"
+                    className="group block relative overflow-hidden rounded-2xl bg-white shadow-md transition-all hover:shadow-2xl hover:border-blue-400 border-2 border-transparent cursor-pointer"
                   >
-                    <div className="relative h-80 w-full overflow-hidden bg-gray-50">
+                    <div className="relative w-full h-64 sm:h-72 md:h-80 overflow-hidden bg-white">
                       <Image
                         src={course.image}
                         alt={course.title}
                         fill
-                        className="object-contain transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        quality={95}
+                        className="object-contain transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={100}
                       />
                     </div>
                     <div className="p-4">

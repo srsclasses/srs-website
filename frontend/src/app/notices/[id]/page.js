@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { notices as noticesData } from "@/data/notices";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -18,33 +19,14 @@ export default function NoticeDetailPage() {
   const params = useParams();
   const router = useRouter();
   const [notice, setNotice] = useState(null);
-  const [allNotices, setAllNotices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [allNotices, setAllNotices] = useState(noticesData);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch all notices to determine prev/next
-        const response = await fetch('http://localhost:5000/api/notices');
-        if (!response.ok) {
-          throw new Error('Failed to fetch notices');
-        }
-        const data = await response.json();
-        setAllNotices(data);
-        
-        const currentNotice = data.find(n => n.id === parseInt(params.id));
-        setNotice(currentNotice || null);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching notice:", err);
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
     if (params.id) {
-      fetchData();
+      const currentNotice = noticesData.find(n => n.id === parseInt(params.id));
+      setNotice(currentNotice || null);
     }
   }, [params.id]);
 

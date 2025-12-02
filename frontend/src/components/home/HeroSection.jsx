@@ -2,30 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { heroSlides } from "@/data/homeData";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slides, setSlides] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Fetch hero slides from backend
-  useEffect(() => {
-    const fetchSlides = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/hero-slides');
-        if (response.ok) {
-          const data = await response.json();
-          setSlides(data);
-        }
-      } catch (error) {
-        console.error("Error fetching hero slides:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSlides();
-  }, []);
+  const [slides, setSlides] = useState(heroSlides);
+  const [loading, setLoading] = useState(false);
 
   // Auto-play carousel
   useEffect(() => {
@@ -73,12 +56,15 @@ const HeroSection = () => {
           className="absolute inset-0"
         >
           {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${slides[currentSlide].image})`,
-            }}
-          >
+          <div className="absolute inset-0">
+            <Image
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].title}
+              fill
+              priority={currentSlide === 0}
+              className="object-cover"
+              quality={90}
+            />
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
