@@ -1,155 +1,229 @@
-# SRS Classes - Educational Platform
+# The SRS Classes - Official Website
 
-Welcome to **SRS Classes**, a startup offering online and offline classes for BPSC and other competitive exams. This project provides a comprehensive educational platform with features for courses, notices, current affairs, and more.
+A modern, responsive educational platform for BPSC and competitive exam preparation built with Next.js 15 and React 19.
 
-## 🚀 Features
+## 🌟 Features
 
-- **Modern UI/UX**: Beautiful, responsive design with dark mode support
-- **Dynamic Content**: All data managed through local data files
-- **Course Management**: Display and manage BPSC courses
-- **Notices System**: Keep students informed with important announcements
-- **Current Affairs**: Daily updates on national and international news
-- **Mentor Profiles**: Showcase experienced faculty
-- **Top Performers**: Highlight successful students
-- **Responsive Design**: Works perfectly on all devices
+- **6 Comprehensive Courses**: BPSC Hindi/English, Foundation batches, and free AEDO course
+- **Modern UI/UX**: Beautiful, responsive design with smooth animations
+- **Dynamic Routing**: Individual pages for each course with detailed information
+- **Multiple Enrollment Options**: Online (YouTube/Google Play) and offline purchases
+- **Contact Modal**: Integrated contact information for offline enrollments
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **SEO Optimized**: Proper meta tags and semantic HTML
+- **Image Optimization**: Next.js Image component for optimal performance
 
 ## 📁 Project Structure
 
 ```
 srs-classes/
-├── frontend/                   # Next.js application
-│   ├── src/
-│   │   ├── app/               # Pages (home, courses, notices, etc.)
-│   │   ├── components/        # Reusable components
-│   │   └── data/              # Local data files
-│   │       ├── homeData.js    # Hero slides, courses, about section
-│   │       ├── notices.js     # Notices data
-│   │       └── currentAffairs.js # Current affairs data
-│   ├── public/
-│   │   └── images/            # Course images
-│   ├── package.json
-│   └── other config files
-├── .gitignore
-├── README.md
-└── PROJECT_STATUS.md
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── page.js            # Home page
+│   │   ├── about/             # About us page
+│   │   ├── contact/           # Contact page
+│   │   ├── courses/           # Courses listing & details
+│   │   ├── notices/           # Notices system
+│   │   ├── mentors/           # Mentor profiles
+│   │   └── top-performers/    # Success stories
+│   ├── components/            # Reusable components
+│   │   ├── Header.jsx         # Site navigation
+│   │   ├── Footer.jsx         # Site footer
+│   │   ├── home/              # Home page sections
+│   │   └── courses/           # Course components
+│   └── data/                  # Static data files
+│       ├── homeData.js        # Homepage content
+│       ├── courses.js         # Course information
+│       └── notices.js         # Notices & announcements
+├── public/
+│   └── images/                # Course images, logo, etc.
+├── package.json
+├── next.config.mjs
+└── tailwind.config.mjs
 ```
 
 ## 🛠️ Technology Stack
 
-### Frontend
-- **Framework**: Next.js 16 with React 19
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Image Optimization**: Next.js Image component
-- **Routing**: Next.js App Router
+- **Framework**: Next.js 15.1.4
+- **React**: 19.0.0
+- **Styling**: Tailwind CSS 3.4.1
+- **Animations**: Framer Motion 11.15.0
+- **Language**: JavaScript (JSX)
 
 ## 📦 Installation & Setup
 
 ### Prerequisites
-- Node.js 18+ installed
+- Node.js 18.x or higher
 - npm or yarn package manager
 
-### Frontend Setup
+### Installation Steps
 
-1. Navigate to the frontend directory:
-```bash
-cd frontend
-```
-
-2. Install dependencies:
+1. **Install dependencies**:
 ```bash
 npm install
 ```
 
-3. Run the development server:
+2. **Run development server**:
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to:
+3. **Open in browser**:
 ```
 http://localhost:3000
 ```
 
-## 🎨 Key Pages
+### Production Build
 
-- **Home** (`/`): Hero carousel, popular courses, recent notices, about section
-- **Courses** (`/courses`): All available BPSC courses
-- **Course Detail** (`/courses/[id]`): Individual course information
-- **Notices** (`/notices`): All announcements and notices
-- **Notice Detail** (`/notices/[id]`): Full notice content
-- **Current Affairs** (`/current-affairs`): Daily news updates
-- **About** (`/about`): Information about SRS Classes
-- **Mentors** (`/mentors`): Faculty profiles
-- **Top Performers** (`/top-performers`): Successful students
+1. **Create production build**:
+```bash
+npm run build
+```
 
-## 📝 Data Management
-
-All data is stored locally in the `frontend/src/data/` directory:
-
-### homeData.js
-- Hero carousel slides
-- Popular courses
-- About section content
-
-### notices.js
-- Notice announcements
-- Categories: Admission, Examination, Event, Academic, General
-
-### currentAffairs.js
-- National news
-- International news
-- State-specific news (Bihar)
-- Organized by date
-
-To update content, simply edit the relevant data file and restart the development server.
-
-## 🎯 Features Breakdown
-
-### Hero Section
-- Auto-rotating carousel with 4 slides
-- Smooth transitions and animations
-- Responsive images
-
-### Courses
-- 6 BPSC courses with actual images
-- Three action buttons: Info, Buy Online, Buy Offline
-- Detailed course pages
-
-### Notices
-- Categorized notices
-- "NEW" and "PINNED" badges
-- Full-content view on detail pages
-- Print and share functionality
-
-### Current Affairs
-- Date-wise organization
-- Category filtering (National, International, State)
-- Expandable detail views
-- High-priority badges
+2. **Start production server**:
+```bash
+npm run start
+```
 
 ## 🔧 Configuration
 
-### Update Site Metadata
-Edit `frontend/src/app/layout.js` to change:
+### Update Contact Information
+
+**IMPORTANT**: Update the placeholder contact information in 3 files:
+
+1. `src/components/courses/CourseDetailView.jsx` (lines 231-248)
+2. `src/components/home/PopularCoursesSection.jsx` (lines 179-196)  
+3. `src/app/courses/page.js` (lines 231-248)
+
+Replace:
+- Address: "The SRS Classes, Patna, Bihar" → Your actual address
+- Phone: "+91 98765 43210" → Your actual number
+
+### Update External Links
+
+- **YouTube Playlist**: Free AEDO course links to YouTube (lines with `youtube.com`)
+- **Google Play Store**: Paid courses link to app (lines with `play.google.com`)
+
+### Modify Site Metadata
+
+Edit `src/app/layout.js` to update:
 - Site title
 - Description
-- Metadata
+- Metadata for SEO
 
-### Modify Colors
-Update `frontend/tailwind.config.js` for theme customization.
+## 📄 Available Pages
 
-### Add New Pages
-Create new files in `frontend/src/app/` following Next.js App Router conventions.
+| Route | Description |
+|---|---|
+| `/` | Homepage with hero, courses, features |
+| `/courses` | All courses listing |
+| `/courses/[id]` | Individual course details |
+| `/courses/bpsc-hindi` | BPSC Hindi course (custom route) |
+| `/courses/bpsc-english` | BPSC English course (custom route) |
+| `/about` | About The SRS Classes |
+| `/contact` | Contact information |
+| `/not ices` | Announcements & notices |
+| `/notices/[id]` | Individual notice details |
+| `/mentors` | Faculty profiles |
+| `/top-performers` | Success stories |
+
+## 💾 Data Management
+
+All course and content data is stored in `src/data/`:
+
+### courses.js
+Contains all course information:
+- Title, description, pricing
+- Features & topics
+- Mentors & stats
+- Availability (online/offline)
+
+### homeData.js
+Homepage content including:
+- Popular courses
+- Hero slides
+- About section
+
+### notices.js
+Announcements and notices with:
+- Category, priority
+- Date, content
+- Pin status
+
+To update content, edit the relevant data file and restart the dev server.
+
+## 🎨 Key Features
+
+### Course Purchase Flow
+- **Free Courses**: Direct link to YouTube playlist
+- **Paid Courses (Online)**: Link to Google Play Store app
+- **Paid Courses (Offline)**: Contact modal with address/phone
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoints: sm (640px), md (768px), lg (1024px)
+- Optimized images for all screen sizes
+
+### Performance
+- Next.js Image optimization
+- Priority loading for above-fold content
+- Lazy loading for below-fold content
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push code to GitHub
+2. Import project in Vercel
+3. Deploy with one click
+
+### Other Platforms
+
+Compatible with any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- Digital Ocean
+- Custom server with Node.js
+
+## 📝 Development Tips
+
+### Adding a New Course
+
+1. Add course data to `src/data/courses.js`
+2. Add course image to `public/images/`
+3. Course will automatically appear on listings
+
+### Customizing Colors
+
+Edit `tailwind.config.mjs` to modify theme colors.
+
+### Adding New Pages
+
+Create new routes in `src/app/[page-name]/page.js`
+
+## 🐛 Troubleshooting
+
+### Dev server won't start
+```bash
+# Clear cache and reinstall
+rm -rf .next node_modules
+npm install
+npm run dev
+```
+
+### Images not loading
+- Ensure images are in `public/images/`
+- Check image paths in data files
+- Verify image names match exactly (case-sensitive)
+
+## 📞 Support
+
+For technical support or questions, contact the development team.
 
 ## 📄 License
 
-This project is proprietary and belongs to SRS Classes.
-
-## 📞 Contact
-
-For questions or support, please contact SRS Classes administration.
+© 2024 The SRS Classes. All rights reserved.
 
 ---
 
-**Built with ❤️ by SRS Classes Team**
+**Built with ❤️ for educational excellence**
