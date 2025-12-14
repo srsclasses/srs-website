@@ -1,5 +1,7 @@
 # The SRS Classes - Official Website
 
+*New feature branch added: feature/update-readme*
+
 A modern, responsive educational platform for BPSC and competitive exam preparation built with Next.js 15 and React 19.
 
 ## 🌟 Features

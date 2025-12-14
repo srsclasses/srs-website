@@ -2,15 +2,15 @@
     "heroSlides": [
         {
             "id": 1,
-            "image": "/images/meet-your-mentor.jpg",
-            "title": "Meet Your Mentor",
-            "subtitle": "Expert guidance from experienced faculty"
-        },
-        {
-            "id": 2,
             "image": "/images/tre-4.0.jpg",
             "title": "TRE 4.0",
             "subtitle": "Join the new batch for Teacher Recruitment Exam"
+        },
+        {
+            "id": 2,
+            "image": "/images/meet-your-mentor.jpg",
+            "title": "Meet Your Mentor",
+            "subtitle": "Expert guidance from experienced faculty"
         },
         {
             "id": 3,
