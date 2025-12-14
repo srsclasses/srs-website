@@ -2,18 +2,24 @@
     "heroSlides": [
         {
             "id": 1,
+            "image": "/images/72-bpsc.jpg",
+            "title": "72 BPSC Prelims Foundation",
+            "subtitle": "Join the new batch for 72nd BPSC"
+        },
+        {
+            "id": 2,
             "image": "/images/meet-your-mentor.jpg",
             "title": "Meet Your Mentor",
             "subtitle": "Expert guidance from experienced faculty"
         },
         {
-            "id": 2,
+            "id": 3,
             "image": "/images/tre-4.0.jpg",
             "title": "TRE 4.0",
             "subtitle": "Join the new batch for Teacher Recruitment Exam"
         },
         {
-            "id": 3,
+            "id": 4,
             "image": "/images/free-aedo.jpg",
             "title": "Free AEDO Course",
             "subtitle": "Comprehensive preparation at no cost"
