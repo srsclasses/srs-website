@@ -46,13 +46,13 @@ const HeroSection = () => {
   return (
     <section className="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-foreground">
       {/* Carousel Slides */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
           key={currentSlide}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           className="absolute inset-0 w-full h-full"
         >
           {/* Background Image */}
