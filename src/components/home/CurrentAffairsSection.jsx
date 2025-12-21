@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import currentAffairsData from "@/data/currentAffairs.json";
+
 
 /**
  * Current Affairs Section Component for Home Page
@@ -15,25 +15,38 @@ export default function CurrentAffairsSection() {
   const [pdfUrl, setPdfUrl] = useState("");
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     setSelectedDate(today);
   }, []);
 
-  // Check for PDF in JSON
+  // Fetch PDF from API
   useEffect(() => {
     if (!selectedDate) return;
 
-    setLoading(true);
-    setPdfExists(false);
-    const foundEntry = currentAffairsData.find(item => item.date === selectedDate);
-    if (foundEntry) {
-      setPdfUrl(foundEntry.link);
-      setPdfExists(true);
-    } else {
-      setPdfUrl('/pdfs/default-current-affair.pdf');
-      setPdfExists(true);
-    }
-    setLoading(false);
+    const fetchCurrentAffair = async () => {
+      setLoading(true);
+      setPdfExists(false);
+      try {
+        const res = await fetch(`/api/current-affairs?date=${selectedDate}`);
+        const data = await res.json();
+
+        if (data && data.link) {
+          setPdfUrl(data.link);
+          setPdfExists(true);
+        } else {
+          setPdfUrl("/pdfs/default-current-affair.pdf");
+          setPdfExists(true); // Keeping existing fallback logic
+        }
+      } catch (error) {
+        console.error("Failed to fetch current affair:", error);
+        setPdfUrl("/pdfs/default-current-affair.pdf");
+        setPdfExists(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCurrentAffair();
   }, [selectedDate]);
 
   if (!selectedDate) return null; // Prevent hydration error

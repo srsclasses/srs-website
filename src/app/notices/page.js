@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import noticesData from "@/data/notices.json";
+
+import { useState, useEffect } from "react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -23,6 +24,23 @@ const staggerContainer = {
 };
 
 export default function NoticesPage() {
+  const [notices, setNotices] = useState([]);
+
+  useEffect(() => {
+    const fetchNotices = async () => {
+      try {
+        const res = await fetch('/api/notices');
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setNotices(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch notices:", error);
+      }
+    };
+    fetchNotices();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -54,7 +72,7 @@ export default function NoticesPage() {
       <section className="py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-8 text-sm text-foreground/60">
-            Showing {noticesData.length} {noticesData.length === 1 ? 'notice' : 'notices'}
+            Showing {notices.length} {notices.length === 1 ? 'notice' : 'notices'}
           </div>
           <motion.div
             variants={staggerContainer}
@@ -63,10 +81,10 @@ export default function NoticesPage() {
             className="mx-auto max-w-5xl space-y-4"
           >
             <AnimatePresence mode="popLayout">
-              {noticesData.length > 0 ? (
-                noticesData.map((notice, index) => (
+              {notices.length > 0 ? (
+                notices.map((notice, index) => (
                   <motion.div
-                    key={index}
+                    key={notice._id || index}
                     variants={fadeIn}
                     layout
                     initial={{ opacity: 0, scale: 0.9 }}
