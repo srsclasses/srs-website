@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import noticesData from "@/data/notices.json";
+
+import { useState, useEffect } from "react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -24,6 +25,23 @@ const staggerContainer = {
 };
 
 const RecentNoticesSection = () => {
+  const [notices, setNotices] = useState([]);
+
+  useEffect(() => {
+    const fetchNotices = async () => {
+      try {
+        const res = await fetch('/api/notices');
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setNotices(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch notices:", error);
+      }
+    };
+    fetchNotices();
+  }, []);
+
   return (
     <section className="bg-background py-16 lg:py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -55,9 +73,9 @@ const RecentNoticesSection = () => {
           viewport={{ once: true }}
           className="mx-auto max-w-4xl space-y-4"
         >
-          {noticesData.slice(0, 3).map((notice, index) => (
+          {notices.slice(0, 3).map((notice, index) => (
             <motion.div
-              key={index}
+              key={notice._id || index}
               variants={fadeIn}
               className="group relative overflow-hidden rounded-xl border border-foreground/10 bg-background shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >

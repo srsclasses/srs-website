@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import currentAffairsData from "@/data/currentAffairs.json";
+
 
 /**
  * Current Affairs Page Component
@@ -20,23 +20,30 @@ export default function CurrentAffairs() {
     setSelectedDate(today);
   }, []);
 
-  // Load PDF URL based on selected date
+  // Load PDF URL based on selected date from API
   useEffect(() => {
     if (!selectedDate) return;
-    setLoading(true);
-    const entry = currentAffairsData.find(item => item.date === selectedDate);
-    if (entry) {
-      setPdfUrl(entry.link);
-    } else {
-      setPdfUrl('/pdfs/default-current-affair.pdf');
-    }
+    
+    const fetchCurrentAffair = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`/api/current-affairs?date=${selectedDate}`);
+        const data = await res.json();
+        
+        if (data && data.link) {
+          setPdfUrl(data.link);
+        } else {
+          setPdfUrl('/pdfs/default-current-affair.pdf');
+        }
+      } catch (error) {
+        console.error("Failed to fetch current affair:", error);
+        setPdfUrl('/pdfs/default-current-affair.pdf');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // Safety timeout in case onLoad doesn't fire
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
+    fetchCurrentAffair();
   }, [selectedDate]);
 
   const handleToday = () => {
