@@ -43,6 +43,7 @@ const Header = () => {
     { href: "/courses", label: "All Courses" },
     { href: "/current-affairs", label: "Current Affairs" },
     { href: "/notices", label: "Notices" },
+    { href: "/pdfs/sat-result.pdf", label: "SRS Result", target: "_blank" },
     { href: "/contact", label: "Contact Us" },
   ];
 
@@ -66,7 +67,7 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-foreground/80">
             {links.map((link) => (
-              <Link key={link.href} href={link.href} className="transition-all duration-300 hover:text-primary hover:scale-105 relative group">
+              <Link key={link.href} href={link.href} target={link.target} className="transition-all duration-300 hover:text-primary hover:scale-105 relative group">
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
@@ -104,6 +105,7 @@ const Header = () => {
                   <Link 
                     key={link.href} 
                     href={link.href} 
+                    target={link.target} 
                     className="text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 hover:translate-x-2 hover:font-semibold px-2"
                     onClick={closeMenu}
                   >
