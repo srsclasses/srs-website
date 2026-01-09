@@ -43,7 +43,7 @@ const Header = () => {
     { href: "/courses", label: "All Courses" },
     { href: "/current-affairs", label: "Current Affairs" },
     { href: "/notices", label: "Notices" },
-    { href: "/pdfs/sat-result.pdf", label: "SRS Result", target: "_blank" },
+    { href: "/pdfs/sat-result.pdf", label: "SAT Result", target: "_blank" },
     { href: "/contact", label: "Contact Us" },
   ];
 
