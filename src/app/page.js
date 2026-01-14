@@ -8,7 +8,7 @@ import CurrentAffairsSection from "@/components/home/CurrentAffairsSection";
 import AboutSection from "@/components/home/AboutSection";
 import PopularVideosSection from "@/components/home/PopularVideosSection";
 import CTASection from "@/components/home/CTASection";
-
+import PosterPopup from "@/components/PosterPopup";
 
 
 export default function Home() {
@@ -21,6 +21,7 @@ export default function Home() {
       <AboutSection />
       <PopularVideosSection />
       <CTASection />
+      <PosterPopup />
     </div>
   );
 }
